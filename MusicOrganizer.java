@@ -75,10 +75,15 @@ public class MusicOrganizer
         if (index >= 0 && index <= highestIndex && highestIndex != -1) {
             isValid = true;
         } else if (highestIndex == -1) {
-            System.out.println("Error: Invalid index. The collection is empty.");
+            System.out.println("The collection is empty.");
         } else {
             System.out.println("Error: invalid index. The valid index range is 0 to " + highestIndex);
         }
         return isValid;
+    }
+    public void listAllFiles(){
+        for (String filename : files){
+            System.out.println(filename);
+        }
     }
 }
