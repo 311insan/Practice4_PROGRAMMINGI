@@ -59,16 +59,6 @@ public class MusicOrganizer
             files.remove(index);
         }
     }
-    public boolean checkIndex(int index){
-        boolean isValid = false;
-        int highestIndex = files.size()-1;
-        if (index >= 0 && index <= highestIndex){
-            isValid = true;
-        } else {
-            System.out.println("Error: invalud index. The valid index range is 0 to " + highestIndex);
-        }
-        return isValid;
-    }
     public boolean validIndex(int index){
         boolean isValid = false;
         int highestIndex = files.size()-1;
@@ -91,6 +81,18 @@ public class MusicOrganizer
         for (String filename : files){
             System.out.println(position + " " + filename);
             position++;
+        }
+    }
+    public void listMatching(String searchString) {
+        boolean match = false;
+        for (String filename : files) {
+            if(filename.contains(searchString)) {
+                System.out.println(filename);
+                match = true;
+            }
+        }
+        if (match == false){
+            System.out.println("no match");
         }
     }
 }
