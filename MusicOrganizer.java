@@ -43,7 +43,7 @@ public class MusicOrganizer
      */
     public void listFile(int index)
     {
-        if(index >= 0 && index < files.size()) {
+        if(validIndex(index)) {
             String filename = files.get(index);
             System.out.println(filename);
         }
@@ -55,8 +55,30 @@ public class MusicOrganizer
      */
     public void removeFile(int index)
     {
-        if(index >= 0 && index < files.size()) {
+        if(validIndex(index)) {
             files.remove(index);
         }
+    }
+    public boolean checkIndex(int index){
+        boolean isValid = false;
+        int highestIndex = files.size()-1;
+        if (index >= 0 && index <= highestIndex){
+            isValid = true;
+        } else {
+            System.out.println("Error: invalud index. The valid index range is 0 to " + highestIndex);
+        }
+        return isValid;
+    }
+    public boolean validIndex(int index){
+        boolean isValid = false;
+        int highestIndex = files.size()-1;
+        if (index >= 0 && index <= highestIndex && highestIndex != -1) {
+            isValid = true;
+        } else if (highestIndex == -1) {
+            System.out.println("Error: Invalid index. The collection is empty.");
+        } else {
+            System.out.println("Error: invalid index. The valid index range is 0 to " + highestIndex);
+        }
+        return isValid;
     }
 }
